@@ -1,0 +1,26 @@
+ 
+
+    ###For module 3 we were given a data set based on the presidential election during 2016, then asked to plug it in into R code and analyze the results.
+Below is the code given in the assignment:  
+ 
+Name <- c("Jeb", “Donald”, "Ted”, “Marco” “Carly”, “Hillary”, “Berine”)
+ABC political poll results <- c(4, 62 51, 21, 2, 14, 15)
+CBS political poll results <- c(12, 75, 43, 19, 1, 21, 19) 
+ 
+###First line: 
+> Name <- c("Jeb", “Donald”, "Ted”, “Marco” “Carly”, “Hillary”, “Berine”)
+ 
+###To begin with, the first line of code has a few errors that prevented me from continuing. For starters, some of the quotation marks are straight quotes and curly quotes which will cause errors, also there is a few missing commas missing between Marco and Carley.
+
+###Second and third line:
+> ABC political poll results <- c(4, 62 51, 21, 2, 14, 15)
+> CBS political poll results <- c(12, 75, 43, 19, 1, 21, 19)
+
+ ##These two lines have the same error, both object names have spaces which will automatically cause errors, and a couple of numbers are missing commas.
+
+
+###Below is the correct code:
+
+>Name <- c("Jeb", "Donald", "Ted", "Marco", "Carly", "Hillary", "Bernie")
+>ABC_political_poll_results <- c(4, 62, 51, 21, 2, 14, 15)
+>CBS_political_poll_results <- c(12, 75, 43, 19, 1, 21, 19)
