@@ -1,0 +1,37 @@
+##For module 4 we were given a data that was collected by the local hospital, with 5 variables based on 10 patients. 
+##We were asked to organize the data correctly and then create a side by side box plot and histogram.
+
+# With the data Iw as given, I created the following vectors
+
+Freq <- c(0.6, 0.3, 0.4, 0.4, 0.2, 0.6, 0.3, 0.4, 0.9, 0.2)
+bloodp <- c(103, 87, 32, 42, 59, 109, 78, 205, 135,176)
+first <- c(1, 1, 1, 1, 0, 0, 0, 0, NA, 1)
+second <- c(0, 0, 1, 1, 0, 0, 1, 1, 1, 1)
+finaldecision <- c(0, 1, 0, 1, 0, 1, 0, 1, 1, 1)
+
+# turned the data into a data.frame so it is easier to manipulate
+
+data <- data.frame(Freq, bloodp, first, second, finaldecision)
+print(data)
+
+# Creating boxplots for Blood pressure and Frequency 
+
+boxplot( data$bloodp,
+         main = "Boxplot of Blood Pressure",
+         ylab = "Blood Pressure")
+boxplot(data$Freq,
+        main = "Frequency of visits to hospital in the last 12 months.",
+        ylab = " Frequency")
+
+#Crating a histogram for Blood pressure and Frequency 
+
+hist(data$bloodp,
+     main = "Blood Pressure graph for 10 patience",
+     xlab = "Blood Pressure")
+hist(data$Freq,
+     main = "Frequency of visits to hospital in the last 12 months.",
+     xlab = "Visits",
+     ylab = "Frequency for 12 months")
+
+#By comparing these graphs, this data is more appropriately visualized using a histogram rather than a box plot. 
+#A histogram provides a clearer representation of data over a time period,making it easier to interpret the distribution along the X-axis.
