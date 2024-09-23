@@ -1,1 +1,32 @@
+#Module 5
+#For this weeks assignment we were instructed to creat two matrix's and find the value of inverse and determinant for the
+#following matrix's
 
+A <- matrix(1:100, nrow = 10)
+B <- matrix(1:1000, nrow = 10)
+print(A)
+print(B)
+
+#To calculate a martix's inverse, the matrix must be a square. the only matrix that is a square, is matrix A.
+#To find the inverse I used the solve() function:
+
+inverse_A <- solve(A)
+
+#output:
+> inverse_A <- solve(A)
+Error in solve.default(A) : 
+  Lapack routine dgesv: system is exactly singular: U[6,6] = 0
+
+#after using the solve() function on A, the output stated that the system is exactly singular so there is no inverse
+#when a matrix is singular it means that the Determinant is equal to zero, to test that I will be using the det() function
+
+deter_A <- det(A)
+print(deter_A)
+
+#output: [1] 0
+
+#just to test the function on matrix B, this is the result you get after you use the solve() function on a matrix that is not a square
+inverse_B <- solve(B)
+
+#output: 
+Error in solve.default(B) : 'a' (10 x 100) must be square
