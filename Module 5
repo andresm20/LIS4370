@@ -7,26 +7,59 @@ B <- matrix(1:1000, nrow = 10)
 print(A)
 print(B)
 
-#To calculate a martix's inverse, the matrix must be a square. the only matrix that is a square, is matrix A.
-#To find the inverse I used the solve() function:
+#Transpose A and B  given a matrix or data.frame x, t returns the transpose of x. 
 
-inverse_A <- solve(A)
+trans_A <- t(A)
+trans_B <- t(B)
 
-#output:
-> inverse_A <- solve(A)
-Error in solve.default(A) : 
-  Lapack routine dgesv: system is exactly singular: U[6,6] = 0
+#create two Vectors 'a' and 'b' (creating 2 vectors with one with 10 elements and one with 100 elements to match the matrix's)
 
-#after using the solve() function on A, the output stated that the system is exactly singular so there is no inverse
-#when a matrix is singular it means that the Determinant is equal to zero, to test that I will be using the det() function
+a <- 1:10
+b <- 1:100
 
-deter_A <- det(A)
-print(deter_A)
+#multiply matrices by vectors
 
-#output: [1] 0
+answer_A <- A %*% a
+answer_B <- B %*% b
 
-#just to test the function on matrix B, this is the result you get after you use the solve() function on a matrix that is not a square
-inverse_B <- solve(B)
+print(answer_A)
+output: 
 
-#output: 
-Error in solve.default(B) : 'a' (10 x 100) must be square
+> print(answer_A)
+      [,1]
+ [1,] 3355
+ [2,] 3410
+ [3,] 3465
+ [4,] 3520
+ [5,] 3575
+ [6,] 3630
+ [7,] 3685
+ [8,] 3740
+ [9,] 3795
+[10,] 3850
+
+print(answer_B)
+output: 
+
+> print(answer_B)
+         [,1]
+ [1,] 3338050
+ [2,] 3343100
+ [3,] 3348150
+ [4,] 3353200
+ [5,] 3358250
+ [6,] 3363300
+ [7,] 3368350
+ [8,] 3373400
+ [9,] 3378450
+[10,] 3383500
+
+#Inverse a matrix given in the assignment 
+
+S <- matrix(2:5, nrow = 2)
+det_S <- det(S)
+print(det_S)
+
+output: 
+> print(det_S)
+[1] -2
