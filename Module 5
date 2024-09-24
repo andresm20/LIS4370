@@ -7,7 +7,7 @@ B <- matrix(1:1000, nrow = 10)
 print(A)
 print(B)
 
-#Transpose A and B  given a matrix or data.frame x, t returns the transpose of x. 
+#Transpose A and B  given a matrix or data.frame x, t returns the transpose of x. Using t() function.
 
 trans_A <- t(A)
 trans_B <- t(B)
@@ -17,7 +17,7 @@ trans_B <- t(B)
 a <- 1:10
 b <- 1:100
 
-#multiply matrices by vectors
+#multiply matrices by vectors using '%*%'
 
 answer_A <- A %*% a
 answer_B <- B %*% b
@@ -54,12 +54,27 @@ output:
  [9,] 3378450
 [10,] 3383500
 
-#Inverse a matrix given in the assignment 
+#matrix given in the assignment 
 
 S <- matrix(2:5, nrow = 2)
+
+#Determinant 
+
 det_S <- det(S)
 print(det_S)
 
 output: 
+
 > print(det_S)
 [1] -2
+
+#Inverse of S
+
+solve(S)
+
+output: 
+
+> solve(S)
+     [,1] [,2]
+[1,] -2.5    2
+[2,]  1.5   -1
