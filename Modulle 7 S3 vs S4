@@ -1,0 +1,81 @@
+###Module 7
+###For this weeks assignment we were ask to download any type of date and determine if generic function as discussed in this module can be assigned to the data set.
+
+###using 'mtcars' for the data and checking generic functions 
+
+data("mtcars")
+print(mtcars)
+
+###summary of the data
+summary(mtcars)
+
+###mean() function won't work directly on the whole mtcars data frame because it contains multiple columns. I applied it to  the colomun 'mpg'
+
+mean(mtcars$mpg) 
+
+###Number of columns in the data frame
+length(mtcars) 
+
+###Number of rows in the data frame
+nrow(mtcars)
+
+###First and last few rows of the dataset
+head(mtcars)
+tail(mtcars)
+
+###column names of the data
+names(mtcars)
+
+###Conclusion : Yes, generic functions can be used with the mtcars dataset, as it is a data frame with predefined methods for common generic functions like summary(), print(), etc.
+
+#EXAMPLE OF S3
+
+###Creating an S3 object with mtcars
+car4 <- mtcars[4, ] # Getting the fourth row
+class(car4) <- "car"  # Assigning class to the object
+
+print(car4)
+
+#Defining a print method for the 'car' class
+print.car <- function(x) {
+  cat("car Model: ", rownames(x), "\n")
+  cat("miles per Gallon: ", x$mpg, "\n")
+  cat("Number of Cylinders: ", x$cyl, "\n")
+  cat("Horsepower: ", x$hp, "\n")
+}
+
+###testing the new print method
+print(car4)
+
+###Summary for S3: 
+###I created an S3 class called car and made instances of it by selecting rows from the mtcars dataset.
+###Then, I defined a custom print method for the car class, which nicely presents the key details about each car. 
+###To see how everything worked, I used the print method to display the information.
+
+#EXAMPLE OF S4
+###Defining the S4 class
+library(methods)
+
+###First, I’ll define an S4 class called Car. This class will have slots for mpg (miles per gallon), cyl (number of cylinders), and hp (horsepower).
+setClass(
+  "car",
+  slots = list(
+    mpg = "numeric",
+    cyl = "integer",
+    hp = "numeric"
+  )
+)
+
+###Next, I created instances of the 'Car' class using the rows from the mtcars dataset. For simplicity, let’s just take the first three cars
+
+car1 <- new("car", mpg = mtcars$mpg[1], cyl = as.integer(mtcars$cyl[1]), hp = mtcars$hp[1])
+car2 <- new("car", mpg = mtcars$mpg[2], cyl = as.integer(mtcars$cyl[2]), hp = mtcars$hp[2])
+car3 <- new("car", mpg = mtcars$mpg[3], cyl = as.integer(mtcars$cyl[3]), hp = mtcars$hp[3])
+
+###To checck that everything is working, I'll display the details of these car objects
+car1
+car2
+car3
+
+###Summary for S4:
+###In this process, I defined an S4 class called 'Car' with specific slots for relevant attributes and created several instances using data from the mtcars dataset.
