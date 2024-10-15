@@ -1,0 +1,26 @@
+#For this week's assignment, we are practicing how to import a data table into R, perform some basic data manipulation, and save the output to new files.
+
+#Step 1: Import dataset into R
+>x = read.table("/Users/dre/Documents/Assignment 6 Dataset.txt", header = TRUE, sep = ",")
+
+#Step2: run 'plyer' generates for the mean of both Age and Grade split by gender
+
+#First, install and load the plyr package:
+>install.packages("plyr")
+
+#Next, use the ddply function to calculate the mean of the Grade for each gender (Sex):
+>library(plyr)
+>y = ddply(x, "Sex", transform, Grade.Average = mean(Grade))
+
+#Step3: Save the results to a CSV file
+>write.table(y, "Sorted_Average", sep = ",")
+
+#Step:4 Filter names that contain the letter "i"
+
+#Create a subset of the data where the Name column contains the letter "i" (case insensitive):
+>newx = subset(x, grepl("[iI]", x$Name))\
+
+#Then, save the filtered data to a file:
+>write.table(newx, "DataSubset", sep = ",")
+
+#Outcome: After completing these steps, we have saved two lists into files directly from R: one containing the average Grade by gender and another with names containing the letter "i."
