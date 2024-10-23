@@ -1,0 +1,68 @@
+#I am using a dataset that contains = information about Porsche cars with the following columns:
+
+#Price: The price of the car.
+#Age: The age of the car in years.
+#Mileage: The number of miles the car has been driven.
+
+porsche_data <- read.csv("/Users/dre/Downloads/PorschePrice.csv")
+
+# 1 base R.
+
+#I will be creating a scatter plot to show the relationship between the case Age and Price
+
+plot(porsche_data$Age, porsche_data$Price, 
+     main="Scatterplot of Porsche Price vs Age",
+     xlab="Age of Car (Years)", ylab="Price (in $1000s)",
+     col="darkgreen", pch=18, cex=1.5)
+grid()
+
+# linear regression line
+model <- lm(Price ~ Age, data = porsche_data)
+abline(model, col = "red", lwd = 2)
+
+#Base R:
+
+#Simplicity: Quick and easy for basic plots.
+#Limitations: Less customizable and aesthetically pleasing than other packages.
+
+# 2 Lattice.
+
+# I will be using the xyplot() function from the lattice package to create my visualization 
+
+library(lattice)
+
+xyplot(Price ~ Age, data = porsche_data,
+       main = "Scatterplot of Porsche Price vs Age with Regression Line",
+       xlab = "Age of Car (Years)", 
+       ylab = "Price (in $1000s)",
+       pch = 16, 
+       col = "blue", 
+       cex = 1, 
+       panel = function(x, y) {
+         panel.xyplot(x, y, col = "blue", pch = 16, cex = 1)
+         panel.lmline(x, y, col = "red", lwd = 2) 
+         panel.grid(h = -1, v = -1) 
+       })
+
+#Base R relies on base graphics, which can look more basic and less polished while Lattice plots 
+#are designed with a more modern aesthetic and often look cleaner by default.
+
+# 3 ggplot2.
+
+library(ggplot2)
+
+# I created a scatter plot with this data to be able to compare it to the other 2 scatter plots.
+
+ggplot(porsche_data, aes(x = Age, y = Price)) +
+  geom_point(color = "blue", size = 3) + # Scatter points
+  geom_smooth(method = "lm", color = "red", size = 1) + # Linear regression line
+  labs(title = "Scatterplot of Porsche Price vs Age with Regression Line",
+       x = "Age of Car (Years)", 
+       y = "Price (in $1000s)") +
+  theme_minimal()
+
+#ggplot2:
+
+#Layered Approach: Provides a flexible and powerful system for building plots layer by layer.
+#Aesthetics: Better options for customizing aesthetics (colors, themes, sizes).
+#Functionality: Offers a wide range of geoms and statistical transformations.
