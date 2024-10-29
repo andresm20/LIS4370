@@ -1,0 +1,11 @@
+Package: EnViz
+Type: Package
+Title: Data Storytelling Tools for Enhanced Visualizations
+Version: 0.0.0.9000
+Author: Andres Mora [Andresmz1996@gmail.com]
+Maintainer: Andres Mora <Andresmz1996@gmail.com>
+Description: EnViz offers tools to enhance data storytelling within R. It provides functions for annotation,
+    highlighting key data points, and zooming into specific plot areas, allowing users to effectively communicate insights from 
+    their data visualizations.
+License: CCO
+LazyData: true
