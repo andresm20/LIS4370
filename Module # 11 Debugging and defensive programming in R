@@ -1,0 +1,39 @@
+#Original code
+tukey_multiple <- function(x) {
+   outliers <- array(TRUE,dim=dim(x))
+   for (j in 1:ncol(x))
+    {
+    outliers[,j] <- outliers[,j] && tukey.outlier(x[,j])
+    }
+outlier.vec <- vector(length=nrow(x))
+    for (i in 1:nrow(x))
+    { outlier.vec[i] <- all(outliers[i,]) } return(outlier.vec) }
+
+##Error: unexpected symbol in:
+"  for (i in 1:nrow(x))
+  { outlier.vec[i] <- all(outliers[i,]) } return"
+
+#I wrote the function with more space, and it ran succesfully
+
+#New Code
+tukey_multiple <- function(x) {
+   outliers <- array(TRUE,dim=dim(x))
+   for (j in 1:ncol(x))
+    {
+    outliers[,j] <- outliers[,j] && tukey.outlier(x[,j])
+    }
+outlier.vec <- vector(length=nrow(x))
+    for (i in 1:nrow(x))
+    { outlier.vec[i] <- all(outliers[i,]) }
+return(outlier.vec) }
+
+#next I used the new function to test it:
+tukey_multiple(mtcars)
+
+#an error came back stating there was an issue with the function 
+
+#I used traceback() to check, and it indicated that the issue was with the tukey_multiple function itself.
+
+?tukey_multiple
+
+#I checked for the function, and it returned no results, concluding that this function did not exist.
