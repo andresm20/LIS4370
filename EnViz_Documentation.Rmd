@@ -1,0 +1,75 @@
+---
+title: "EnViz Package Documentation"
+author: "Andres Mora"
+output: html_document
+date: "`r Sys.Date()`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+The **EnViz** package enhances data storytelling by providing tools for annotating plots, highlighting key data points, and zooming into specific plot areas. These features help users create more impactful visualizations and communicate insights effectively.
+
+## Main Functions
+### 1. annotate_plot()
+This function allows you to add custom annotations to ggplot visualizations.
+**Example usage:**
+```r
+library(ggplot2)
+library(EnViz)
+
+# Create an example scatter plot using the mtcars dataset
+p <- ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point()
+
+# Add annotation at x = 3, y = 20 with a custom message
+# This will overlay a text annotation on the plot
+annotate_plot(p, "annotation goes in here", x = 3, y = 20)
+```
+
+### 2. highlight_points()
+This function highlights specific data points on a plot.
+**Example usage:**
+```r
+
+# Highlight points in the 'p' plot where the 'cyl' variable equals 4
+# This will change the appearance of those points (e.g., color or shape) to stand out
+highlight_points(p, highlight_var = "cyl", highlight_value = 4)
+
+```
+
+### 3. zoom_plot()
+This function zooms into a specific region of your plot.
+**Example usage:**
+```r
+
+# Zoom into a specific region of the plot
+# This focuses on the data where x-axis values are between 2 and 4,
+# and y-axis values are between 15 and 25
+zoom_plot(p, xlim = c(2, 4), ylim = c(15, 25))
+
+```
+
+## FAQ
+
+### Q1: How do I install the EnViz package?
+A: To install the EnViz package from GitHub, use the following command:
+```r
+devtools::install_github("andresm20/EnViz")
+```
+### Q2: What types of plots are supported by EnViz?
+A: EnViz works exclusively with ggplot2 visualizations.
+
+### Q3: Can I use EnViz with non-ggplot2 visualizations?
+A: No, EnViz functions only work with ggplot2 objects.
+
+### Q4: What should I do if I encounter errors while using EnViz functions?
+A: Here are a few troubleshooting tips:
+* Ensure your input is a ggplot2 object.
+* Check your function parameters to ensure correct values (e.g., variable names, plot limits).
+* Refer to error messages, which often provide clues about what went wrong.
+
+
+
