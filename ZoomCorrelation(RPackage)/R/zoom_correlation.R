@@ -1,14 +1,33 @@
 #' Zoom Plot Based on Perfect Correlation
 #'
-#' @param data A data frame containing the variables.
-#' @param x_var Name of the x variable.
-#' @param y_var Name of the y variable.
-#' @param threshold Correlation threshold (default is 0.99).
-#' @param zoom_factor Scaling factor for the zoom effect (default is 0.05).
+#' Creates a scatter plot with automatic zoom for highly correlated variables.
+#' The function determines correlation strength and applies appropriate zoom levels
+#' to highlight the relationship between variables.
 #'
-#' @return A ggplot object with zoom applied if correlation threshold is met.
+#' @param data A data frame containing the variables (must contain numeric columns)
+#' @param x_var Name of the x variable (must be a numeric column in data)
+#' @param y_var Name of the y variable (must be a numeric column in data)
+#' @param threshold Correlation threshold (default is 0.99, range 0 to 1)
+#' @param zoom_factor Scaling factor for the zoom effect (default is 0.05, smaller values = more zoom)
+#'
+#' @return A ggplot object with:
+#'   \itemize{
+#'     \item Scatter plot of x vs y variables
+#'     \item Automatic zoom if correlation exceeds threshold
+#'     \item Informative title and axis labels
+#'   }
 #' @export
 #'
+#' @examples
+#' # Perfect positive correlation
+#' test_perfect <- data.frame(x = 1:100, y = 2 * (1:100))
+#' zoom_correlation(test_perfect, "x", "y")
+#'
+#' # Custom zoom level
+#' zoom_correlation(test_perfect, "x", "y", zoom_factor = 0.02)
+#'
+#' # Different threshold
+#' zoom_correlation(test_perfect, "x", "y", threshold = 0.95)
 zoom_correlation <- function(data, x_var, y_var, threshold = 0.99, zoom_factor = 0.05) {
   # Input validation: Check if variables are numeric type
   # This ensures the correlation calculation will work
