@@ -10,7 +10,7 @@ An R package that creates zoomed scatter plots for highly correlated variables.
 
 ## Installation
 ```r
-devtools::install_github("andresm20/ZoomCorrelation")
+devtools::install_github("https://github.com/andresm20/LIS4370.git/ZoomCorrelation")
 
 library(ZoomCorrelation)
 
