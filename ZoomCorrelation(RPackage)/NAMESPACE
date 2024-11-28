@@ -1,0 +1,8 @@
+exportPattern("^[[:alpha:]]+")
+export(zoom_correlation)
+import(ggplot2)
+import(dplyr)
+import(stats)
+importFrom(knitr, kable)
+importFrom(rmarkdown, render)
+importFrom(testthat, test_that)
