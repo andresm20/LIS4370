@@ -10,9 +10,10 @@ library(ZoomCorrelation)
 
 ## ZoomCorrelation Function Examples
 
-This document demonstrates the usage of the zoom_correlation function with different types of correlations and zoom levels.
+This document demonstrates the comprehensive functionality of the zoom_correlation function through various scenarios and use cases.
 
-## Create data with perfect positive correlation
+## 1. Perfect Positive Correlation
+
 This example demonstrates a dataset with a perfect positive correlation, where the y variable is directly proportional to the x variable.
 ```{r perfect_correlation}
 test_perfect <- data.frame(
@@ -22,17 +23,22 @@ test_perfect <- data.frame(
 zoom_correlation(test_perfect, "x", "y")
 ```
 
-## Different Zoom Levels
+## 2. Exploring Zoom Levels
+
 Here we demonstrate how changing the zoom_factor parameter affects the intensity of the zoom effect.
 ```{r zoom_levels}
-# More intense zoom (zoom_factor = 0.02)
+# Intense zoom for detailed view
 zoom_correlation(test_perfect, "x", "y", zoom_factor = 0.02)
 
-# Less intense zoom (zoom_factor = 0.10)
+# Moderate zoom for balanced view
+zoom_correlation(test_perfect, "x", "y", zoom_factor = 0.05)
+
+# Light zoom for broader context
 zoom_correlation(test_perfect, "x", "y", zoom_factor = 0.10)
 ```
 
-## Perfect Negative Correlation
+## 3. Perfect Negative Correlation
+
 This example demonstrates a dataset with a perfect negative correlation, where the y variable is inversely proportional to the x variable.
 ```{r negative_correlation}
 # Create data with perfect negative correlation
@@ -43,7 +49,8 @@ test_negative <- data.frame(
 zoom_correlation(test_negative, "x", "y")
 ```
 
-## Strong but Imperfect Correlation
+## 4. Strong but Imperfect Correlation
+
 Here we simulate a dataset with a strong but imperfect positive correlation. Random noise is added to the y variable.
 ```{r strong_correlation}
 #Create data with strong but imperfect correlation
@@ -54,7 +61,8 @@ test_strong <- data.frame(
 zoom_correlation(test_strong, "x", "y")
 ```
 
-## Weak Correlation
+## 5. Weak Correlation
+
 This example demonstrates a dataset with weak correlation, where the relationship between x and y is almost random.
 ```{r weak_correlation}
 ## Create data with weak correlation
@@ -64,4 +72,17 @@ test_weak <- data.frame(
 )
 zoom_correlation(test_weak, "x", "y")
 ```
-Each example demonstrates different aspects of the zoom_correlation function, from perfect correlations to weak correlations, and shows how the zoom effect changes based on the correlation strength.
+
+## 6. Different Threshold Values
+
+Testing various correlation thresholds
+```{r treshold_correlation}
+# Lower threshold to capture more relationships
+zoom_correlation(test_strong, "x", "y", threshold = 0.95)
+
+# Higher threshold for stricter filtering
+zoom_correlation(test_strong, "x", "y", threshold = 0.99)
+```
+
+
+Each example demonstrates different aspects of the zoom_correlation function, from perfect correlations to weak correlations, and shows how the zoom effect changes based on correlation strength and user parameters.
